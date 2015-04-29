@@ -10,12 +10,12 @@ fi
 (
   echo "Pushing build to ${GH_REF} gh-pages branch."
   git checkout -b gh-pages
-  git config user.name "Travis-CI"
-  git config user.email "travis@nodemeatspace.com"
+  git config user.name "${GIT_NAME}"
+  git config user.email "${GIT_EMAIL}"
   git add .
   git add bower_components -f
   git add node_modules -f
   git commit -m "Deployed to Github Pages"
   git branch
-  git push --force "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
+  git push --force "https://${GH_TOKEN}:x-oauth-basic@${GH_REF}" gh-pages:gh-pages
 )

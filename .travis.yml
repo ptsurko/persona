@@ -4,8 +4,9 @@ node_js:
 env:
   global:
   - GH_REF: github.com/ptsurko/persona.git
-  - GH_TOKEN: d0a4680c9e104fe8ccc61321f34e8de0f2097fb0
-  - secure: bwYYZnBz2V/u5gYqqN6Xf/iyPvrQL8MpDnddPmyN5rigmH8JUZ2zUmshUZJdSG9OFL/NgCMFacAa7HNyEdH05FwubltbPls4n9RDQ5jEh3CItVVMVxONGr0DdmBVF5XvoAr3xfGM0+C4m9orYU/jj3O6p7VDgiibX78fN4IRfFc=
+  - GIT_NAME: Travis-CI
+  - GIT_EMAIL: travis@nodemeatspace.com
+  - secure: "QTqOvpXoLrVduip14eo6NMtd2Nmo1NzsYTLtcmDyKKEbliY6z+xhSL6dwKuMnODO6c8sXpsqw0HnS/1JZ2dQaYHn+LrQnaAq2BAPwjmFE4FnHEBTiNSAocHuv7kL+2OR1aW88wOP5vQbr4a+9dS6qLP8PfWljRB6qlsXM/q8Zc4="
 before_install:
   - chmod +x deploy_ghpages.sh
 before_script:
