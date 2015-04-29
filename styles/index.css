@@ -1,0 +1,165 @@
+html {
+    height: 100%;
+}
+
+body {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    border: 0;
+    background-color: transparent !important;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+input[type="text"]:focus {
+    border-color: rgba(241, 134, 59, 0.8) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(241, 134, 59, 0.6) !important;
+}
+
+input.bold {
+    font-weight: bold;
+}
+
+input.muted {
+    color: #999;
+    font-size: .9em;
+}
+
+input[type="text"]:hover {
+    background-size: 16px 16px;
+    background-color: #fff;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42mNgGBKgoKAgAYj/Q3ECJZrBmCLNRBuASzNRXhhemj8AsQExmgWA+ABZmpEMUQDiC+RqBtnugOQVA1JTG8jWCVCvbIAaCKIboDgAZAFWg////08RptgAAMDo/Jm25cdCAAAAAElFTkSuQmCC);
+}
+
+[contenteditable]:hover {
+    outline: 1px solid #ddd;
+    background-size: 16px 16px;
+    background-color: #fff;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42mNgGBKgoKAgAYj/Q3ECJZrBmCLNRBuASzNRXhhemj8AsQExmgWA+ABZmpEMUQDiC+RqBtnugOQVA1JTG8jWCVCvbIAaCKIboDgAZAFWg////08RptgAAMDo/Jm25cdCAAAAAElFTkSuQmCC);
+}
+
+[contenteditable]:focus {
+    background-color: #fff;
+    background-image: none;
+    outline: 1px solid #ddd;
+}
+
+.control-group {
+    margin-bottom: 5px !important;
+}
+
+.page-main-header {
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 1000px;
+    z-index: 1;
+}
+
+.page-main-header .navbar-inner {
+    border-width: 1px;
+}
+
+.page-main-header .page-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.page-main-header .page-title:before {
+    content: 'persona | ';
+    color: #f1863b;
+}
+
+.page-main-footer {
+    height: 30px;
+}
+
+.page-main-content {
+
+}
+
+/*
+    Avatar
+*/
+
+.persona-avatar {
+
+}
+
+.persona-photo {
+    height: 220px;
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.persona-photo-empty {
+    background: url(../images/blank_avatar_male.jpg) no-repeat 50% 50% #d1d1d1;
+    background-size: 100% 100%;
+    display: none;
+}
+
+.persona-photo-empty:first-child:last-child {
+    display: block;
+}
+
+/*
+    Persona Info
+*/
+
+.persona-info {
+
+}
+
+.persona-info dd {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    padding: 2px 0;
+}
+
+/*
+    Spider Diagram
+*/
+.persona-diagram {
+
+}
+
+.persona-spider {
+    height: 400px;
+}
+
+/*
+    Persona Collage
+*/
+
+.persona-collage {
+    position: relative;
+    height: 300px;
+}
+
+.persona-collage-photo {
+    position: absolute;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+    //shape-rendering: crispEdges;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Persona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bower_components/bootstrap/docs/assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body data-ng-app="Persona" data-ng-controller="PersonaController">
+  <header class="page-main-header">
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <h4 class="page-title" contenteditable="true">John Doe</h4>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-main-content container">
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="persona-avatar well">
+          <div class="persona-photo img-rounded persona-photo-empty"></div>
+        </div>
+        <div class="persona-info well">
+          <form action="javascript:void(0);">
+            <dl>
+              <dt>Demographic</dt>
+              <dd>
+                <input class="span12" placeholder="Gender" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Age" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Income" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Educational" type="text">
+              </dd>
+
+              <dt>Geographic</dt>
+              <dd>
+                <input class="span12" placeholder="Metropolitan locations" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Regional locations" type="text">
+              </dd>
+
+              <dt>Psychographic</dt>
+              <dd>
+                <input class="span12" placeholder="Personality" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Values" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Attitudes" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Interests" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Lifestyle" type="text">
+              </dd>
+
+              <dt>Behavioral</dt>
+              <dd>
+                <input class="span12" placeholder="Usage rate" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Loyalty" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Task focus" type="text">
+              </dd>
+
+              <dt>Firmographic</dt>
+              <dd>
+                <input class="span12" placeholder="Industry" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Seniority" type="text">
+              </dd>
+              <dd>
+                <input class="span12" placeholder="Functional area" type="text">
+              </dd>
+            </dl>
+          </form>
+        </div>
+      </div>
+      <div class="span9">
+        <div>
+          <div data-ui-sortable data-ng-model="properties">
+            <div data-ng-repeat="prop in properties" class="control-group controls-row">
+              <div class="span3 bold" editable data-ng-model="prop.name"></div>
+              <div class="span2 text-center muted" editable data-ng-model="prop.min"></div>
+              <input class="span4" type="range" min="1" max="10" step="1" data-ng-model="prop.value">
+              <div class="span2 text-center muted" editable data-ng-model="prop.max"></div>
+              <button type="button" class="btn btn-link" data-ng-click="deleteProperty(prop)">
+                <i class="icon-remove"></i>
+              </button>
+            </div>
+          </div>
+          <div class="control-group controls-row">
+            <div class="span3"></div>
+            <div class="span2"></div>
+            <div class="span4"></div>
+            <div class="span2"></div>
+            <button type="button" class="btn btn-link" data-ng-click="addProperty()">
+              <i class="icon-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="persona-diagram">
+          <div class="persona-spider" propertieschart properties="properties">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="persona-description well span6">
+        <h4 contenteditable="true">
+          Vivamus mauris dolor, ultricies quis rhoncus a, congue a dui.
+        </h4>
+        <p contenteditable="true">
+          Nullam consectetur, orci consequat dapibus cursus, justo ipsum tristique odio, eget sodales erat ligula vel dolor. Maecenas at lacus sed arcu lobortis rhoncus id in mi. Aliquam est libero, auctor a condimentum vel, eleifend vitae tortor. Morbi felis massa, fermentum semper posuere nec, pretium sit amet diam. Nunc pulvinar commodo viverra. Mauris bibendum posuere justo, non tempus sem suscipit eget. Donec in sapien ut mi scelerisque eleifend sit amet eu eros. Vestibulum in ipsum augue, mattis faucibus neque. Nam rutrum eleifend vestibulum. Ut auctor nibh ac velit rutrum ullamcorper. Quisque et lorem vel mauris malesuada blandit. Ut tortor leo, rhoncus nec interdum eget, condimentum vitae augue. Morbi eget malesuada urna. Donec convallis facilisis metus quis rhoncus. Vestibulum scelerisque leo eros, eu ultricies dolor.
+        </p>
+      </div>
+      <div class="span6">
+        <div class="well well-small">
+          <h4 contenteditable="true">Collage</h4>
+        </div>
+        <div class="persona-collage">
+          <img style="top: 0; left: 0;" class="persona-collage-photo" src="images/collage/1.png" alt="Collage Photo 1" />
+          <img style="bottom: 0; left: 50px;" class="persona-collage-photo" src="images/collage/2.jpg" alt="Collage Photo 2" />
+          <img style="top: 50px; right: 80px;" class="persona-collage-photo" src="images/collage/3.jpg" alt="Collage Photo 3" />
+          <img style="bottom: 0; right: 0;" class="persona-collage-photo" src="images/collage/4.jpg" alt="Collage Photo 4" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="page-main-footer">
+
+  </footer>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jquery-ui/ui/minified/core.min.js"></script>
+  <script src="bower_components/jquery-ui/ui/minified/widget.min.js"></script>
+  <script src="bower_components/jquery-ui/ui/minified/mouse.min.js"></script>
+  <script src="bower_components/jquery-ui/ui/minified/sortable.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
+  <script src="bower_components/d3/d3.min.js"></script>
+  <script src="node_modules/d3-transform/src/d3-transform.js"></script>
+  <script src="lib/raychart.js"></script>
+  <script src="scripts/main2.js"></script>
+  <script src="scripts/controllers/personacontroller.js"></script>
+  <script src="scripts/directives/editable.js"></script>
+  <script src="scripts/directives/propertieschart.js"></script>
+</body>
+</html>
