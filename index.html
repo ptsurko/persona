@@ -4,6 +4,9 @@
   <title>Persona</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+  <link rel="stylesheet" href="styles/common.css" />
+  <link rel="stylesheet" href="styles/bootstrap.css" />
   <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body data-ng-app="Persona" data-ng-controller="PersonaController">
@@ -22,100 +25,118 @@
           <div class="persona-photo img-rounded persona-photo-empty"></div>
         </div>
         <div class="persona-info well">
-          <form action="javascript:void(0);">
-            <dl>
-              <dt>Demographic</dt>
-              <dd>
-                <input class="col-md-12" placeholder="Gender" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Age" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Income" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Educational" type="text">
-              </dd>
-
-              <dt>Geographic</dt>
-              <dd>
-                <input class="col-md-12" placeholder="Metropolitan locations" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Regional locations" type="text">
-              </dd>
-
-              <dt>Psychographic</dt>
-              <dd>
-                <input class="col-md-12" placeholder="Personality" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Values" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Attitudes" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Interests" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Lifestyle" type="text">
-              </dd>
-
-              <dt>Behavioral</dt>
-              <dd>
-                <input class="col-md-12" placeholder="Usage rate" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Loyalty" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Task focus" type="text">
-              </dd>
-
-              <dt>Firmographic</dt>
-              <dd>
-                <input class="col-md-12" placeholder="Industry" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Seniority" type="text">
-              </dd>
-              <dd>
-                <input class="col-md-12" placeholder="Functional area" type="text">
-              </dd>
-            </dl>
-          </form>
+          <pr-widget mode="mode" model="listSection">
+            <pr-widget-view>
+              <pr-header level="2" header="model.title"></pr-header>
+              <div data-ng-repeat="item in model.items">
+                <div>{{item.label}}</div>
+                <div>{{item.value}}</div>
+              </div>
+            </pr-widget-view>
+            <pr-widget-edit>
+              <div class="form-group input-group-sm">
+                <label for="title">Section Title:</label>
+                <input type="text" class="form-control" id="title" ng-model="model.title">
+              </div>
+              <div data-ng-repeat="item in model.items" class="row-full-height">
+                <div class="col-md-12 col-md-height form-group input-group-xs">
+                  <label for="itemLabel{{$index}}">List Item Label</label>
+                  <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
+                  <label for="itemValue{{$index}}">List Item Value</label>
+                  <input type="text" class="form-control" id="itemValue{{$index}}" ng-model="item.value">
+                </div>
+                <div class="col-md-height col-middle">
+                  <button class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <button data-ng-click="model.addNewItem()" class="btn btn-default">Add list item</button>
+              </div>
+            </pr-widget-edit>
+          </pr-widget>
+          <pr-widget mode="mode" model="storySection">
+            <pr-widget-view>
+              <pr-header level="2" header="model.title"></pr-header>
+              <p>{{model.story}}</p>
+            </pr-widget-view>
+            <pr-widget-edit>
+              <div class="form-group input-group-sm">
+                <label for="title">Section Title:</label>
+                <input type="text" class="form-control" id="title" ng-model="model.title">
+              </div>
+              <div class="form-group input-group-sm">
+                <textarea class="form-control" ng-model="model.story" rows="7"></textarea>
+              </div>
+            </pr-widget-edit>
+          </pr-widget>
         </div>
       </div>
       <div class="col-md-9">
         <div>
-          <div data-ui-sortable data-ng-model="properties">
-            <div data-ng-repeat="prop in properties" class="form-group row">
-              <div class="col-md-3 bold" editable data-ng-model="prop.name"></div>
-              <div class="col-md-2 text-center muted" editable data-ng-model="prop.min"></div>
-              <div class="col-md-4">
-                <input type="range" min="1" max="10" step="1" data-ng-model="prop.value">
-              </div>
-              <div class="col-md-2 text-center muted" editable data-ng-model="prop.max"></div>
-              <button type="button" class="btn btn-link btn-xs" data-ng-click="deleteProperty(prop)">
-                <i class="glyphicon glyphicon-remove"></i>
-              </button>
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-md-3"></div>
-            <div class="col-md-2"></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-2"></div>
-            <button type="button" class="btn btn-link btn-xs" data-ng-click="addProperty()">
-              <i class="glyphicon glyphicon-plus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="persona-diagram">
-          <div class="persona-spider" propertieschart properties="properties">
-
+          <div ng-init="mode='view'">
+            <input type="checkbox" bs-switch ng-model="isEditMode">
+            <pr-widget mode="mode" model="rangeSection">
+              <pr-widget-view>
+                <pr-header level="2" header="model.title"></pr-header>
+                <div data-ng-repeat="item in model.items">
+                  <div class="form-group row">
+                    <div class="col-md-2 bold">{{item.label}}</div>
+                    <div class="col-md-2 text-center muted">{{item.minLabel}}</div>
+                    <div class="col-md-6">
+                      <input type="range" min="1" max="10" step="1" data-ng-model="item.value">
+                    </div>
+                    <div class="col-md-2 text-center muted">{{item.maxLabel}}</div>
+                  </div>
+                </div>
+              </pr-widget-view>
+              <pr-widget-edit>
+                <div>
+                  <div class="row">
+                    <div class="form-group input-group-sm col-md-5">
+                      <label for="title">Section Title:</label>
+                      <input type="text" class="form-control" id="title" ng-model="model.title">
+                    </div>
+                  </div>
+                  <div class="row" data-ng-repeat="item in model.items">
+                    <div class="col-full-height col-md-height col-bottom">{{$index}}</div>
+                    <div class="col-md-height">
+                      <div class="row-same-height row-full-height">
+                        <div class="form-group input-group-xs col-md-5 col-md-height">
+                          <label for="itemLabel{{$index}}">Diagram Item Label</label>
+                          <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
+                          <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
+                          <input type="text" class="form-control" id="itemMinLabel{{$index}}" ng-model="item.minLabel">
+                        </div>
+                        <div class="form-group input-group-xs col-md-5 col-md-height col-bottom">
+                          <label for="itemMaxLabel{{$index}}">Diagram Item Label Alpha</label>
+                          <input type="text" class="form-control" id="itemMaxLabel{{$index}}" ng-model="item.maxLabel">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-height col-middle">
+                      <button class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" ng-show="model.items.length > 3">
+                        <i class="glyphicon glyphicon-remove"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row text-center">
+                    <button data-ng-click="model.addNewItem()" class="btn btn-default">Add diagram item</button>
+                  </div>
+                </div>
+              </pr-widget-edit>
+            </pr-widget>
+            <pr-widget mode="mode" model="rangeSection">
+              <pr-widget-view>
+                <div class="persona-diagram">
+                  <div class="persona-spider" propertieschart items="model.items"></div>
+                </div>
+              </pr-widget-view>
+              <pr-widget-edit>
+                <img src="images/spider_chart.jpg" alt="Spider Diagram" />
+              </pr-widget-edit>
+            <pr-widget>
           </div>
         </div>
       </div>
@@ -154,11 +175,15 @@
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
   <script src="bower_components/d3/d3.min.js"></script>
+  <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+  <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
   <script src="node_modules/d3-transform/src/d3-transform.js"></script>
   <script src="lib/raychart.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/models.js"></script>
   <script src="scripts/controllers/personacontroller.js"></script>
-  <script src="scripts/directives/editable.js"></script>
   <script src="scripts/directives/propertieschart.js"></script>
+  <script src="scripts/directives/widget.js"></script>
+  <script src="scripts/directives/header.js"></script>
 </body>
 </html>

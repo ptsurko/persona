@@ -1,9 +1,10 @@
+// TODO: rename
 angular.module('Persona')
   .directive('propertieschart', [function() {
     return {
       restrict: 'EA',
       scope: {
-        properties: '=properties'
+        items: '=items'
       },
       link: function(scope, element, attrs) {
         var rayChart = d3.starline.rayChart();
@@ -15,11 +16,11 @@ angular.module('Persona')
           .append("g")
           .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 
-        scope.$watch('properties', function(newData, oldData) {
-          var chartData = newData.map(function(property) {
+        scope.$watch('items', function(newData, oldData) {
+          var chartData = newData.map(function(item) {
             return {
-              axis: property.name,
-              value: property.value
+              axis: item.label,
+              value: item.value
             };
           });
           g.data([[chartData]]).call(rayChart);

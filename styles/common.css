@@ -1,0 +1,27 @@
+
+@font-face {
+    font-family: "WeblySleek UI";
+    src: url(weblysleekuil.ttf) format("truetype");
+}
+
+body {
+  font-size: 12px;
+  font-family: "WeblySleek UI";
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 46px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
