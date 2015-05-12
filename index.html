@@ -10,15 +10,27 @@
   <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body data-ng-app="Persona" data-ng-controller="PersonaController">
-  <header class="page-main-header">
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <h4 class="page-title" contenteditable="true">John Doe</h4>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Persona</a>
+      </div>
+      <form class="navbar-form navbar-right">
+        <label for="edit">Edit:</label>
+        <input type="checkbox" id="edit" bs-switch ng-model="isEditMode">
+      </form>
+    </div>
+  </nav>
+  <header>
+    <div class="container">
+      <pr-header data-ng-if="mode=='view'" level="1" header="person.name"></pr-header>
+      <div data-ng-if="mode=='edit'" class="form-group col-md-3">
+        <label for="title">Section Title:</label>
+        <input type="text" class="form-control" id="title" ng-model="person.name">
       </div>
     </div>
   </header>
-
-  <section class="page-main-content container">
+  <main class="container">
     <div class="row">
       <div class="col-md-3">
         <div class="persona-avatar well">
@@ -46,9 +58,9 @@
                   <input type="text" class="form-control" id="itemValue{{$index}}" ng-model="item.value">
                 </div>
                 <div class="col-md-height col-middle">
-                  <button class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)">
+                  <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" role="button">
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="form-group text-center">
@@ -74,95 +86,69 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div>
-          <div ng-init="mode='view'">
-            <input type="checkbox" bs-switch ng-model="isEditMode">
-            <pr-widget mode="mode" model="rangeSection">
-              <pr-widget-view>
-                <pr-header level="2" header="model.title"></pr-header>
-                <div data-ng-repeat="item in model.items">
-                  <div class="form-group row">
-                    <div class="col-md-2 bold">{{item.label}}</div>
-                    <div class="col-md-2 text-center muted">{{item.minLabel}}</div>
-                    <div class="col-md-6">
-                      <input type="range" min="1" max="10" step="1" data-ng-model="item.value">
+        <pr-widget mode="mode" model="rangeSection">
+          <pr-widget-view>
+            <pr-header level="2" header="model.title"></pr-header>
+            <div data-ng-repeat="item in model.items">
+              <div class="form-group row">
+                <div class="col-md-2 bold">{{item.label}}</div>
+                <div class="col-md-2 text-center muted">{{item.minLabel}}</div>
+                <div class="col-md-6">
+                  <input type="range" min="1" max="10" step="1" data-ng-model="item.value">
+                </div>
+                <div class="col-md-2 text-center muted">{{item.maxLabel}}</div>
+              </div>
+            </div>
+          </pr-widget-view>
+          <pr-widget-edit>
+            <div>
+              <div class="row">
+                <div class="form-group input-group-sm col-md-5">
+                  <label for="title">Section Title:</label>
+                  <input type="text" class="form-control" id="title" ng-model="model.title">
+                </div>
+              </div>
+              <div class="row" data-ng-repeat="item in model.items">
+                <div class="col-full-height col-md-height col-bottom">{{$index}}</div>
+                <div class="col-md-height">
+                  <div class="row-same-height row-full-height">
+                    <div class="form-group input-group-xs col-md-5 col-md-height">
+                      <label for="itemLabel{{$index}}">Diagram Item Label</label>
+                      <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
+                      <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
+                      <input type="text" class="form-control" id="itemMinLabel{{$index}}" ng-model="item.minLabel">
                     </div>
-                    <div class="col-md-2 text-center muted">{{item.maxLabel}}</div>
+                    <div class="form-group input-group-xs col-md-5 col-md-height col-bottom">
+                      <label for="itemMaxLabel{{$index}}">Diagram Item Label Alpha</label>
+                      <input type="text" class="form-control" id="itemMaxLabel{{$index}}" ng-model="item.maxLabel">
+                    </div>
                   </div>
                 </div>
-              </pr-widget-view>
-              <pr-widget-edit>
-                <div>
-                  <div class="row">
-                    <div class="form-group input-group-sm col-md-5">
-                      <label for="title">Section Title:</label>
-                      <input type="text" class="form-control" id="title" ng-model="model.title">
-                    </div>
-                  </div>
-                  <div class="row" data-ng-repeat="item in model.items">
-                    <div class="col-full-height col-md-height col-bottom">{{$index}}</div>
-                    <div class="col-md-height">
-                      <div class="row-same-height row-full-height">
-                        <div class="form-group input-group-xs col-md-5 col-md-height">
-                          <label for="itemLabel{{$index}}">Diagram Item Label</label>
-                          <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
-                          <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
-                          <input type="text" class="form-control" id="itemMinLabel{{$index}}" ng-model="item.minLabel">
-                        </div>
-                        <div class="form-group input-group-xs col-md-5 col-md-height col-bottom">
-                          <label for="itemMaxLabel{{$index}}">Diagram Item Label Alpha</label>
-                          <input type="text" class="form-control" id="itemMaxLabel{{$index}}" ng-model="item.maxLabel">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-height col-middle">
-                      <button class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" ng-show="model.items.length > 3">
-                        <i class="glyphicon glyphicon-remove"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="row text-center">
-                    <button data-ng-click="model.addNewItem()" class="btn btn-default">Add diagram item</button>
-                  </div>
+                <div class="col-md-height col-middle">
+                  <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" ng-show="model.items.length > 3" role="button">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </a>
                 </div>
-              </pr-widget-edit>
-            </pr-widget>
-            <pr-widget mode="mode" model="rangeSection">
-              <pr-widget-view>
-                <div class="persona-diagram">
-                  <div class="persona-spider" propertieschart items="model.items"></div>
-                </div>
-              </pr-widget-view>
-              <pr-widget-edit>
-                <img src="images/spider_chart.jpg" alt="Spider Diagram" />
-              </pr-widget-edit>
-            <pr-widget>
-          </div>
-        </div>
+              </div>
+              <div class="row text-center">
+                <button data-ng-click="model.addNewItem()" class="btn btn-default">Add diagram item</button>
+              </div>
+            </div>
+          </pr-widget-edit>
+        </pr-widget>
+        <pr-widget mode="mode" model="rangeSection" class="text-center">
+          <pr-widget-view>
+            <div class="persona-diagram">
+              <pr-ray-chart class="persona-spider" items="model.items"></pr-ray-chart>
+            </div>
+          </pr-widget-view>
+          <pr-widget-edit>
+            <img src="images/spider_chart.jpg" alt="Spider Diagram" />
+          </pr-widget-edit>
+        <pr-widget>
       </div>
     </div>
-    <div class="row">
-      <div class="persona-description well col-md-6">
-        <h4 contenteditable="true">
-          Vivamus mauris dolor, ultricies quis rhoncus a, congue a dui.
-        </h4>
-        <p contenteditable="true">
-          Nullam consectetur, orci consequat dapibus cursus, justo ipsum tristique odio, eget sodales erat ligula vel dolor. Maecenas at lacus sed arcu lobortis rhoncus id in mi. Aliquam est libero, auctor a condimentum vel, eleifend vitae tortor. Morbi felis massa, fermentum semper posuere nec, pretium sit amet diam. Nunc pulvinar commodo viverra. Mauris bibendum posuere justo, non tempus sem suscipit eget. Donec in sapien ut mi scelerisque eleifend sit amet eu eros. Vestibulum in ipsum augue, mattis faucibus neque. Nam rutrum eleifend vestibulum. Ut auctor nibh ac velit rutrum ullamcorper. Quisque et lorem vel mauris malesuada blandit. Ut tortor leo, rhoncus nec interdum eget, condimentum vitae augue. Morbi eget malesuada urna. Donec convallis facilisis metus quis rhoncus. Vestibulum scelerisque leo eros, eu ultricies dolor.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <div class="well well-small">
-          <h4 contenteditable="true">Collage</h4>
-        </div>
-        <div class="persona-collage">
-          <img style="top: 0; left: 0;" class="persona-collage-photo" src="images/collage/1.png" alt="Collage Photo 1" />
-          <img style="bottom: 0; left: 50px;" class="persona-collage-photo" src="images/collage/2.jpg" alt="Collage Photo 2" />
-          <img style="top: 50px; right: 80px;" class="persona-collage-photo" src="images/collage/3.jpg" alt="Collage Photo 3" />
-          <img style="bottom: 0; right: 0;" class="persona-collage-photo" src="images/collage/4.jpg" alt="Collage Photo 4" />
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
   <footer class="page-main-footer">
 
   </footer>
@@ -182,7 +168,7 @@
   <script src="scripts/main.js"></script>
   <script src="scripts/models.js"></script>
   <script src="scripts/controllers/personacontroller.js"></script>
-  <script src="scripts/directives/propertieschart.js"></script>
+  <script src="scripts/directives/raychart.js"></script>
   <script src="scripts/directives/widget.js"></script>
   <script src="scripts/directives/header.js"></script>
 </body>

@@ -3,21 +3,19 @@ angular.module('Persona')
     return {
       restrict: 'EA',
       scope: {
-        level: '=',
         header: '='
       },
-      replace: true,
-      transclude: true,
-      template: '<h1>{{header}}</h1>'
-      // link: function(scope, element, attrs, ctrl, transclude) {
-      //   scope.$watch('level + header', function(level) {
-      //     if (level) {
-      //       transclude(scope, function(clone, scope) {
-      //         debugger
-      //         element.append(clone);
-      //       });
-      //     }
-      //   });
-      // }
+      link: function(scope, element, attrs, ctrl, transclude) {
+        var level = attrs['level'] || 1;
+        var headerEl = angular.element('<h' + level + '></h' + level + '>');
+        element.replaceWith(headerEl);
+
+        scope.$watch('header', function(header) {
+          headerEl.text(header);
+        });
+        scope.$on('$destroy', function() {
+          headerEl.remove();
+        });
+      }
     };
   }])

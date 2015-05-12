@@ -1,6 +1,6 @@
 // TODO: rename
 angular.module('Persona')
-  .directive('propertieschart', [function() {
+  .directive('prRayChart', [function() {
     return {
       restrict: 'EA',
       scope: {
@@ -11,8 +11,8 @@ angular.module('Persona')
         var cfg = {w: 400, h: 400, TranslateX: 80, TranslateY: 30}; //TODO: remove
         var g = d3.select(element[0])
           .append("svg")
-          .attr("width", cfg.w + 300)
-          .attr("height", cfg.h + 100)
+          .attr("width", cfg.w + 160)
+          .attr("height", cfg.h + 60)
           .append("g")
           .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 
