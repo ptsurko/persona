@@ -13,6 +13,7 @@ before_script:
   - npm install -g bower
   - bower install
   - npm install
+  - gulp
 after_success: ./deploy_ghpages.sh
 branches:
   only:

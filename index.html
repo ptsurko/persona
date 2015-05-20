@@ -4,9 +4,11 @@
   <title>Persona</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-toggle/css/bootstrap-toggle.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <link rel="stylesheet" href="styles/common.css" />
   <link rel="stylesheet" href="styles/bootstrap.css" />
+  <link rel="stylesheet" href="styles/bootstrap-sketch.css" />
   <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body data-ng-app="Persona" data-ng-controller="PersonaController">
@@ -17,16 +19,20 @@
       </div>
       <form class="navbar-form navbar-right">
         <label for="edit">Edit:</label>
-        <input type="checkbox" id="edit" bs-switch ng-model="isEditMode">
+        <input type="checkbox" id="edit" pr-toggle ng-model="isEditMode">
       </form>
     </div>
   </nav>
   <header>
     <div class="container">
-      <pr-header data-ng-if="mode=='view'" level="1" header="person.name"></pr-header>
-      <div data-ng-if="mode=='edit'" class="form-group col-md-3">
-        <label for="title">Section Title:</label>
-        <input type="text" class="form-control" id="title" ng-model="person.name">
+      <div class="row">
+        <div data-ng-if="mode=='view'" class="col-md-12">
+          <h1>{{person.name}}</h1>
+        </div>
+        <div data-ng-if="mode=='edit'" class="form-group col-md-3">
+          <label for="title">Section Title:</label>
+          <input type="text" class="form-control" id="title" ng-model="person.name">
+        </div>
       </div>
     </div>
   </header>
@@ -37,12 +43,24 @@
           <div class="persona-photo img-rounded persona-photo-empty"></div>
         </div>
         <div class="persona-info well">
+          <pr-widget>
+            <pr-widget-view>
+              
+            </pr-widget-view>
+            <pr-widget-edit>
+
+            </pr-widget-edit>
+          </pr-widget>
           <pr-widget mode="mode" model="listSection">
             <pr-widget-view>
-              <pr-header level="2" header="model.title"></pr-header>
-              <div data-ng-repeat="item in model.items">
-                <div>{{item.label}}</div>
-                <div>{{item.value}}</div>
+              <header class="widget-header">
+                <h2>{{model.title}}</h2>
+              </header>
+              <div class="widget-content">
+                <dl class="text-list">
+                  <dt data-ng-repeat-start="item in model.items" id="itemLabel{{$index}}" class="text-list-label">{{item.label}}</dt>
+                  <dd data-ng-repeat-end aria-labeledby="itemLabel{{$index}}" class="text-list-value">{{item.value}}</dd>
+                </dl>
               </div>
             </pr-widget-view>
             <pr-widget-edit>
@@ -50,17 +68,19 @@
                 <label for="title">Section Title:</label>
                 <input type="text" class="form-control" id="title" ng-model="model.title">
               </div>
-              <div data-ng-repeat="item in model.items" class="row-full-height">
-                <div class="col-md-12 col-md-height form-group input-group-xs">
-                  <label for="itemLabel{{$index}}">List Item Label</label>
-                  <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
-                  <label for="itemValue{{$index}}">List Item Value</label>
-                  <input type="text" class="form-control" id="itemValue{{$index}}" ng-model="item.value">
-                </div>
-                <div class="col-md-height col-middle">
-                  <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" role="button">
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </a>
+              <div class="text-editor-list">
+                <div data-ng-repeat="item in model.items" class="text-editor-list-item">
+                  <div class="text-editor-list-item-col-editor form-group">
+                    <label for="itemLabel{{$index}}">List Item Label</label>
+                    <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" ng-model="item.label">
+                    <label for="itemValue{{$index}}">List Item Value</label>
+                    <input type="text" class="form-control input-xs" id="itemValue{{$index}}" ng-model="item.value">
+                  </div>
+                  <div class="text-editor-list-item-col-actions">
+                    <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" role="button">
+                      <i class="fa fa-times-circle"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
               <div class="form-group text-center">
@@ -70,8 +90,14 @@
           </pr-widget>
           <pr-widget mode="mode" model="storySection">
             <pr-widget-view>
-              <pr-header level="2" header="model.title"></pr-header>
-              <p>{{model.story}}</p>
+              <header class="widget-header">
+                <h2>{{model.title}}</h2>
+              </header>
+              <div class="widget-content">
+                <div class="story">
+                  <p class="story-content">{{model.story}}</p>
+                </div>
+              </div>
             </pr-widget-view>
             <pr-widget-edit>
               <div class="form-group input-group-sm">
@@ -86,71 +112,72 @@
         </div>
       </div>
       <div class="col-md-9">
-        <pr-widget mode="mode" model="rangeSection">
+        <pr-widget mode="mode" model="rangeSection" class="widget">
           <pr-widget-view>
-            <pr-header level="2" header="model.title"></pr-header>
-            <div data-ng-repeat="item in model.items">
-              <div class="form-group row">
-                <div class="col-md-2 bold">{{item.label}}</div>
-                <div class="col-md-2 text-center muted">{{item.minLabel}}</div>
-                <div class="col-md-6">
-                  <input type="range" min="1" max="10" step="1" data-ng-model="item.value">
-                </div>
-                <div class="col-md-2 text-center muted">{{item.maxLabel}}</div>
+            <header class="widget-header">
+              <h2>{{model.title}}</h2>
+            </header>
+            <div class="widget-content">
+              <ul class="range-list">
+                <li data-ng-repeat="item in model.items" class="range-list-item">
+                  <h3 class="range-list-label">{{item.label}}&nbsp;<span class="range-list-value">{{item.value}}</span></h3>
+                  <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="range-list-range">
+                  <div class="range-list-range-labels">
+                    <span class="range-list-minLabel">{{item.maxLabel}}</span>
+                    <span class="range-list-maxLabel">{{item.minLabel}}</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="text-center">
+                <pr-ray-chart class="persona-spider" items="model.items"></pr-ray-chart>
               </div>
             </div>
           </pr-widget-view>
           <pr-widget-edit>
             <div>
               <div class="row">
-                <div class="form-group input-group-sm col-md-5">
+                <div class="form-group col-md-5">
                   <label for="title">Section Title:</label>
-                  <input type="text" class="form-control" id="title" ng-model="model.title">
+                  <input type="text" class="form-control imput-sm" id="title" ng-model="model.title">
                 </div>
               </div>
-              <div class="row" data-ng-repeat="item in model.items">
-                <div class="col-full-height col-md-height col-bottom">{{$index}}</div>
-                <div class="col-md-height">
-                  <div class="row-same-height row-full-height">
-                    <div class="form-group input-group-xs col-md-5 col-md-height">
-                      <label for="itemLabel{{$index}}">Diagram Item Label</label>
-                      <input type="text" class="form-control" id="itemLabel{{$index}}" ng-model="item.label">
-                      <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
-                      <input type="text" class="form-control" id="itemMinLabel{{$index}}" ng-model="item.minLabel">
-                    </div>
-                    <div class="form-group input-group-xs col-md-5 col-md-height col-bottom">
-                      <label for="itemMaxLabel{{$index}}">Diagram Item Label Alpha</label>
-                      <input type="text" class="form-control" id="itemMaxLabel{{$index}}" ng-model="item.maxLabel">
+              <ul class="range-editor-list" data-ui-sortable data-ng-model="model.items">
+                <li data-ng-repeat="item in model.items" class="range-editor-list-item">
+                  <div class="range-editor-list-col-index">{{$index}}</div>
+                  <div class="range-editor-list-col-editor">
+                    <div class="row-same-height row-full-height">
+                      <div class="form-group col-md-5 col-md-height">
+                        <label for="itemLabel{{$index}}">Diagram Item Label</label>
+                        <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" data-ng-model="item.label">
+                        <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
+                        <input type="text" class="form-control input-xs" id="itemMinLabel{{$index}}" data-ng-model="item.minLabel">
+                      </div>
+                      <div class="form-group col-md-5 col-md-height col-bottom">
+                        <label for="itemMaxLabel{{$index}}">Diagram Item Label Alpha</label>
+                        <input type="text" class="form-control input-xs" id="itemMaxLabel{{$index}}" data-ng-model="item.maxLabel">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-height col-middle">
-                  <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" ng-show="model.items.length > 3" role="button">
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="row text-center">
+                  <div class="range-editor-list-col-actions">
+                    <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" data-ng-show="model.items.length > 3" role="button">
+                      <i class="fa fa-times-circle"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+              <div class="text-center">
                 <button data-ng-click="model.addNewItem()" class="btn btn-default">Add diagram item</button>
+              </div>
+              <div class="text-center">
+                <pr-ray-chart class="persona-spider" items="model.items"></pr-ray-chart>
               </div>
             </div>
           </pr-widget-edit>
         </pr-widget>
-        <pr-widget mode="mode" model="rangeSection" class="text-center">
-          <pr-widget-view>
-            <div class="persona-diagram">
-              <pr-ray-chart class="persona-spider" items="model.items"></pr-ray-chart>
-            </div>
-          </pr-widget-view>
-          <pr-widget-edit>
-            <img src="images/spider_chart.jpg" alt="Spider Diagram" />
-          </pr-widget-edit>
-        <pr-widget>
       </div>
     </div>
   </main>
   <footer class="page-main-footer">
-
   </footer>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -161,8 +188,7 @@
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
   <script src="bower_components/d3/d3.min.js"></script>
-  <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
-  <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+  <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.js"></script>
   <script src="node_modules/d3-transform/src/d3-transform.js"></script>
   <script src="lib/raychart.js"></script>
   <script src="scripts/main.js"></script>
@@ -171,5 +197,6 @@
   <script src="scripts/directives/raychart.js"></script>
   <script src="scripts/directives/widget.js"></script>
   <script src="scripts/directives/header.js"></script>
+  <script src="scripts/directives/toggle.js"></script>
 </body>
 </html>

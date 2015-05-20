@@ -1,0 +1,65 @@
+
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
+.btn-default {
+  background-color: #CCC;
+}
+
+
+.btn-default:hover {
+  background-color: #BBB;
+  border-color: #BBB;
+}
+
+.btn-link .fa {
+  color: #333;
+}
+
+/*****************************
+* Toggle Button
+*****************************/
+
+.toggle.btn {
+  border-radius: 12px !important;
+  padding: 0;
+  height: 24px;
+  min-height: 24px;
+}
+
+.toggle.off > .toggle-group {
+  left: calc(-100% + 22px);
+}
+
+.toggle > .toggle-group > .btn {
+  padding: 0;
+  height: 22px;
+  line-height: 22px;
+  min-height: 22px;
+}
+
+.toggle > .toggle-group > .toggle-on {
+  margin-right: 11px;
+  padding-right: 11px;
+}
+
+.toggle.off > .toggle-group > .toggle-on {
+  background-color: #CCC;
+}
+
+.toggle > .toggle-group > .toggle-off {
+  margin-left: 11px;
+  padding-left: 11px;
+  right: 22px;
+  left: calc(50% - 22px);
+}
+
+.toggle > .toggle-group > .toggle-handle {
+  border-radius: 12px !important;
+  height: 22px;
+  left: -11px;
+  width: 22px;
+}

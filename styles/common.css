@@ -1,27 +1,98 @@
-
 @font-face {
-    font-family: "WeblySleek UI";
-    src: url(weblysleekuil.ttf) format("truetype");
+  font-family: "WeblySleek UI";
+  src: url("../fonts/weblysleekuil.ttf") format("truetype");
 }
-
 body {
   font-size: 12px;
   font-family: "WeblySleek UI";
-  font-weight: 600;
+  font-weight: 500;
 }
-
 h1 {
   font-size: 46px;
 }
-
 h2 {
   font-size: 34px;
 }
-
 h3 {
   font-size: 24px;
 }
-
 h4 {
   font-size: 18px;
+}
+/*************************
+* Text list
+*************************/
+.text-list > .text-list-label {
+  padding-top: 2px;
+}
+.text-list > .text-list-value {
+  padding-bottom: 2px;
+  padding-left: 10px;
+}
+.text-editor-list > .text-editor-list-item {
+  margin-bottom: 15px;
+}
+.text-editor-list > .text-editor-list-item > .text-editor-list-item-col-editor {
+  display: table-cell;
+  width: 100%;
+}
+.text-editor-list > .text-editor-list-item > .text-editor-list-item-col-actions {
+  display: table-cell;
+  vertical-align: middle;
+}
+/*************************
+* Story
+*************************/
+.story > .story-content {
+  padding-left: 10px;
+}
+/*************************
+* Range list
+*************************/
+.range-list {
+  padding-left: 0;
+}
+.range-list > .range-list-item {
+  border-bottom: 1px solid #e3e3e3;
+  display: block;
+  padding: 0 5px;
+}
+.range-list > .range-list-item .range-list-value {
+  bottom: 10px;
+  color: #337ab7;
+  display: inline-block;
+  font-size: 14px;
+  position: relative;
+}
+.range-list > .range-list-item .range-list-range-labels {
+  margin-bottom: 10px;
+}
+.range-list > .range-list-item .range-list-maxLabel {
+  float: right !important;
+}
+.range-editor-list {
+  padding-left: 0;
+}
+.range-editor-list > .range-editor-list-item {
+  display: block;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 10px;
+}
+.range-editor-list > .range-editor-list-item > .range-editor-list-col-index {
+  display: table-cell;
+  vertical-align: bottom;
+}
+.range-editor-list > .range-editor-list-item > .range-editor-list-col-editor {
+  display: table-cell;
+  width: 100%;
+}
+.range-editor-list > .range-editor-list-item > .range-editor-list-col-actions {
+  display: table-cell;
+  vertical-align: middle;
+}
+.range-editor-list > .range-editor-list-item > .range-editor-list-drag-handle {
+  position: relative;
+  right: 0;
+  bottom: 0;
 }

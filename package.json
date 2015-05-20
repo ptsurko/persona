@@ -10,6 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "d3-transform": "^1.0.3",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.3",
+    "gulp-watch": "^4.2.4"
+  },
+  "dependencies": {
     "d3-transform": "^1.0.3"
   }
 }

@@ -44,7 +44,8 @@ function RangeSection(title, items, min, max) {
 extend(RangeSection, ListSection);
 
 RangeSection.prototype.addNewItem = function() {
-  this.items.push(new RangeItem('Development', 2, 'Judging', 'Perceiving'));
+  var value = Math.floor(Math.random() * 10) + 1;
+  this.items.push(new RangeItem('Development', value, 'Judging', 'Perceiving'));
 };
 
 

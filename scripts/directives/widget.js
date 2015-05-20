@@ -9,7 +9,9 @@ angular.module('Persona')
       },
       replace: true,
       transclude: true,
-      template: '<section data-ng-transclude></section>',
+      template: '<section>' +
+                  '<div class="widget" data-ng-transclude></div>' +
+                '</section>',
       controller: function($scope) {
         this.views = [];
         this.addView = function(element, transclude, mode) {

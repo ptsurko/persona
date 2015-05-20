@@ -1,1 +1,1 @@
-angular.module('Persona', ['ui.sortable', 'frapontillo.bootstrap-switch']);
+angular.module('Persona', ['ui.sortable']);
