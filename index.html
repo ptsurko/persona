@@ -39,17 +39,10 @@
   <main class="container">
     <div class="row">
       <div class="col-md-3">
-        <div class="persona-avatar well">
-          <div class="persona-photo img-rounded persona-photo-empty"></div>
-        </div>
         <div class="persona-info well">
-          <pr-widget>
-            <pr-widget-view>
-              
-            </pr-widget-view>
-            <pr-widget-edit>
-
-            </pr-widget-edit>
+          <pr-widget mode="mode" model="avatarSection">
+            <pr-avatar-view data-ng-if="mode=='view'"></pr-avatar-view>
+            <pr-avatar-edit data-ng-if="mode=='edit'"></pr-avatar-edit>
           </pr-widget>
           <pr-widget mode="mode" model="listSection">
             <pr-widget-view>
@@ -196,7 +189,9 @@
   <script src="scripts/controllers/personacontroller.js"></script>
   <script src="scripts/directives/raychart.js"></script>
   <script src="scripts/directives/widget.js"></script>
+  <script src="scripts/directives/transcludenewscope.js"></script>
   <script src="scripts/directives/header.js"></script>
   <script src="scripts/directives/toggle.js"></script>
+  <script src="scripts/directives/avatarwidget.js"></script>
 </body>
 </html>

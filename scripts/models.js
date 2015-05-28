@@ -79,9 +79,10 @@ function RangeItem(label, value, minLabel, maxLabel) {
 };
 
 
-function AvatarItem(avatarUrl) {
-  this.avatarUrl = avatarUrl || '';
+function AvatarSection(avatarUrl) {
+  this.avatarUrl = avatarUrl || 'images/blank_avatar_male.jpg';
 };
+extend(AvatarSection, Section);
 
 
 function extend(Class, BaseClass) {

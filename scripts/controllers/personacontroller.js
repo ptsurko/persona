@@ -16,6 +16,8 @@ angular.module('Persona')
 
       $scope.storySection = new StorySection('Story', 'story');
 
+      $scope.avatarSection = new AvatarSection();
+
       $scope.$watch('isEditMode', function(isEditMode) {
         $scope.mode = isEditMode ? WidgetMode.EDIT : WidgetMode.VIEW;
       });

@@ -19,6 +19,9 @@ h3 {
 h4 {
   font-size: 18px;
 }
+.widget {
+  padding-bottom: 10px;
+}
 /*************************
 * Text list
 *************************/
@@ -95,4 +98,25 @@ h4 {
   position: relative;
   right: 0;
   bottom: 0;
+}
+/*************************
+* Persona avatar
+*************************/
+.avatar-photo {
+  height: 220px;
+  width: 180px;
+  display: block;
+  margin: 0 auto;
+}
+.avatar-photo-empty {
+  background: url(../images/blank_avatar_male.jpg) no-repeat 50% 50% #d1d1d1;
+  background-size: 100% 100%;
+}
+.avatar-editor .avatar-editor-upload-file {
+  display: none;
+}
+.avatar-editor .avatar-editor-upload-btn {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
 }

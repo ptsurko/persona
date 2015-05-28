@@ -7,10 +7,11 @@ angular.module('Persona')
         mode: '=',
         model: '='
       },
+      //TODO: use ng-model
       replace: true,
       transclude: true,
       template: '<section>' +
-                  '<div class="widget" data-ng-transclude></div>' +
+                  '<div class="widget" data-pr-transclude-new-scope></div>' +
                 '</section>',
       controller: function($scope) {
         this.views = [];
@@ -25,14 +26,20 @@ angular.module('Persona')
       link: function(scope, element, attrs, ctrl) {
         scope.$watch(attrs.mode, function(newMode, oldMode) {
           var mode = newMode || WidgetMode.VIEW;
-          element.contents().remove();
-          ctrl.views.forEach(function(view) {
-            if (view.mode == mode) {
-              view.transclude(scope, function(clone, scope) {
-                element.append(clone);
-              });
-            }
-          });
+          if (ctrl.views.length) {
+            element.contents().remove();
+            ctrl.views.forEach(function(view) {
+              if (view.mode == mode) {
+                if (view.transclude) {
+                  view.transclude(scope, function(clone, scope) {
+                    element.append(clone);
+                  });
+                } else {
+                  element.append(view.element);
+                }
+              }
+            });
+          }
         });
       }
     };

@@ -82,34 +82,21 @@ input.muted {
     Avatar
 */
 
-.persona-avatar {
+/*.persona-avatar {
 
-}
+}*/
 
-.persona-photo {
-    height: 220px;
-    width: 180px;
+/*.persona-photo-empty:first-child:last-child {
     display: block;
-    margin: 0 auto;
-}
-
-.persona-photo-empty {
-    background: url(../images/blank_avatar_male.jpg) no-repeat 50% 50% #d1d1d1;
-    background-size: 100% 100%;
-    display: none;
-}
-
-.persona-photo-empty:first-child:last-child {
-    display: block;
-}
+}*/
 
 /*
     Persona Info
 */
 
-.persona-info {
+/*.persona-info {
 
-}
+}*/
 
 /*.persona-info dd {
     display: -webkit-box;
