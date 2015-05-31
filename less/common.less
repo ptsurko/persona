@@ -5,9 +5,10 @@
     font-family: "WeblySleek UI";
     src: url("../fonts/weblysleekuil.ttf") format("truetype");
 }
+@font-size: 14px;
 
 body {
-  font-size: 12px;
+  font-size: @font-size;
   font-family: "WeblySleek UI";
   font-weight: 500;
 }
@@ -28,19 +29,43 @@ h4 {
   font-size: 18px;
 }
 
-// .list-group {
-//   >.list-group-item {
-//     display: block;
-//     background-color: transparent;
-//     border: none;
-//   }
-// }
 
+/*************************
+* Widgets
+*************************/
 
 .widget {
-  padding-bottom: 10px;
+
 }
 
+.widget {
+  .widget-header {
+    h1, h2 {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    margin-bottom: 10px;
+  }
+}
+
+
+.widgets-left {
+  .widget {
+    background-color: #f5f5f5;
+    border-right: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    padding: 20px 20px 0 20px;
+  }
+
+  .widget:first-child {
+    border-top: 1px solid #e3e3e3;
+  }
+
+  .widget:last-child {
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 20px;
+  }
+}
 
 /*************************
 * Text list
@@ -48,18 +73,21 @@ h4 {
 
 .text-list {
   >.text-list-label {
-    padding-top: 2px;
+    float: left;
+    text-align: left;
+    width: 40%;
   }
 
   >.text-list-value {
-    padding-bottom: 2px;
-    padding-left: 10px;
   }
 }
 
 .text-editor-list {
   >.text-editor-list-item {
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 15px;
     margin-bottom: 15px;
+
     >.text-editor-list-item-col-editor {
       display: table-cell;
       width: 100%;
@@ -67,7 +95,19 @@ h4 {
 
     >.text-editor-list-item-col-actions {
       display: table-cell;
-      vertical-align: middle;
+      vertical-align: top;
+
+      >.text-editor-list-item-col-actions-remove-btn {
+        padding-right: 0;
+      }
+    }
+
+    .text-editor-list-item-label-group {
+
+    }
+
+    .text-editor-list-item-value-group {
+      margin-bottom: 0;
     }
   }
 }
@@ -78,7 +118,6 @@ h4 {
 *************************/
 .story {
   >.story-content {
-    padding-left: 10px;
   }
 }
 
@@ -131,7 +170,10 @@ h4 {
     padding: 10px;
 
     >.range-editor-list-col-index {
+      bottom: -2px;
       display: table-cell;
+      line-height: @font-size;
+      position: relative;
       vertical-align: bottom;
     }
 
@@ -142,13 +184,21 @@ h4 {
 
     >.range-editor-list-col-actions {
       display: table-cell;
-      vertical-align: middle;
+      vertical-align: top;
     }
 
     >.range-editor-list-drag-handle {
       position: relative;
       right: 0;
       bottom: 0;
+    }
+
+    .range-editor-list-label-group {
+
+    }
+
+    .range-editor-list-alpha-group, .range-editor-list-omega-group {
+      margin-bottom: 0;
     }
   }
 }
@@ -158,20 +208,35 @@ h4 {
 * Persona avatar
 *************************/
 
-// .persona-avatar {
-//
-// }
+.avatar {
+  height: 220px;
+  width: 220px;
+  margin: auto;
+  vertical-align:middle;
+  position: relative;
 
-.avatar-photo {
-    height: 220px;
-    width: 180px;
+  >.avatar-photo {
     display: block;
-    margin: 0 auto;
-}
+    width: 100%;
+    height: 100%;
+    
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-.avatar-photo-empty {
-    background: url(../images/blank_avatar_male.jpg) no-repeat 50% 50% #d1d1d1;
-    background-size: 100% 100%;
+    &.avatar-photo-fit-width {
+      width: 100%;
+      height: auto;
+    }
+
+    &.avatar-photo-fit-height {
+      height: 100%;
+      width: auto;
+    }
+  }
 }
 
 .avatar-editor {
@@ -182,6 +247,6 @@ h4 {
   .avatar-editor-upload-btn {
     display: block;
     margin: 0 auto;
-    width: 180px;
+    width: 120px;
   }
 }

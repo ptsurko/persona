@@ -1,0 +1,44 @@
+<div>
+  <div class="row">
+    <div class="form-group col-md-5">
+      <label for="title">Section Title:</label>
+      <input type="text" class="form-control imput-sm" id="title" ng-model="model.title">
+    </div>
+  </div>
+  <ul class="range-editor-list" data-ui-sortable data-ng-model="model.items">
+    <li data-ng-repeat="item in model.items" class="range-editor-list-item">
+      <div class="range-editor-list-col-index">{{$index}}</div>
+      <div class="range-editor-list-col-editor">
+        <div class="row-same-height row-full-height">
+          <div class="col-md-5 col-md-height">
+            <div class="form-group">
+              <label for="itemLabel{{$index}}">Diagram Item Label</label>
+              <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" data-ng-model="item.label">
+            </div>
+            <div class="form-group range-editor-list-alpha-group">
+              <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
+              <input type="text" class="form-control input-xs" id="itemMinLabel{{$index}}" data-ng-model="item.minLabel">
+            </div>
+          </div>
+          <div class="col-md-5 col-md-height col-bottom">
+            <div class="form-group range-editor-list-omega-group">
+              <label for="itemMaxLabel{{$index}}">Diagram Item Label Omega</label>
+              <input type="text" class="form-control input-xs" id="itemMaxLabel{{$index}}" data-ng-model="item.maxLabel">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="range-editor-list-col-actions">
+        <a href="#0" class="btn btn-link btn-xs" data-ng-click="model.removeItem(item)" data-ng-show="model.items.length > 3" role="button">
+          <i class="fa fa-times-circle"></i>
+        </a>
+      </div>
+    </li>
+  </ul>
+  <div class="text-center">
+    <button data-ng-click="model.addNewItem()" class="btn btn-default">Add diagram item</button>
+  </div>
+  <div class="text-center">
+    <pr-ray-chart class="persona-spider" items="model.items"></pr-ray-chart>
+  </div>
+</div>

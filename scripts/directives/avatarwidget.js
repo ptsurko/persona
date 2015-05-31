@@ -3,9 +3,7 @@ angular.module('Persona')
     return {
       restrict: 'EA',
       replace: true,
-      template: '<div class="avatar">' +
-                '  <img class="avatar-photo" data-ng-src="{{model.avatarUrl}}"></img>' +
-                '</div>',
+      templateUrl: 'templates/avatar-view.html',
     };
   }])
   .directive('prAvatarEdit', [function() {
@@ -13,11 +11,7 @@ angular.module('Persona')
       restrict: 'EA',
       require: 'prAvatarEdit',
       replace: true,
-      template: '<div class="avatar-editor">' +
-                '  <img class="avatar-photo" data-ng-src="{{model.avatarUrl}}"></img>' +
-                '  <input class="avatar-editor-upload-file" type="file">' +
-                '  <button class="btn btn-default avatar-editor-upload-btn">...</button>' +
-                '</div>',
+      templateUrl: 'templates/avatar-edit.html',
       controller: ['$scope', function($scope) {
         this.uploadAvatar = function(file) {
           var fr = new FileReader();
@@ -45,4 +39,25 @@ angular.module('Persona')
         });
       }
     };
+  }])
+  .directive('prAvatarFit', [function() {
+    return {
+      restrict: 'EA',
+      link: function(scope, element, attrs) {
+        element.addClass('hide');
+        element.on('load', function(e) {
+          element.removeClass('avatar-photo-fit-width');
+          element.removeClass('avatar-photo-fit-height');
+
+          var width = e.target.naturalWidth;
+          var height = e.target.naturalHeight;
+          if (width > height) {
+            element.addClass('avatar-photo-fit-width');
+          } else if (width < height) {
+            element.addClass('avatar-photo-fit-height');
+          }
+          element.removeClass('hide');
+        });
+      }
+    }
   }]);
