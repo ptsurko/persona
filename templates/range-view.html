@@ -5,11 +5,11 @@
   <div class="widget-content">
     <ul class="range-list">
       <li data-ng-repeat="item in model.items" class="range-list-item">
-        <h3 class="range-list-label">{{item.label}}&nbsp;<span class="range-list-value">{{item.value}}</span></h3>
-        <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="range-list-range">
-        <div class="range-list-range-labels">
-          <span class="range-list-minLabel">{{item.maxLabel}}</span>
-          <span class="range-list-maxLabel">{{item.minLabel}}</span>
+        <h3 class="range-list-item-label">{{item.label}}&nbsp;<span class="range-list-item-value">{{item.value}}</span></h3>
+        <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="range-list-item-range">
+        <div class="range-list-item-range-labels">
+          <span class="range-list-item-minLabel">{{item.maxLabel}}</span>
+          <span class="range-list-item-maxLabel">{{item.minLabel}}</span>
         </div>
       </li>
     </ul>

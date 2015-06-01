@@ -1,3 +1,4 @@
+
 .input-xs {
   height: 22px;
   padding: 5px 5px;
@@ -5,18 +6,19 @@
   line-height: 1.5;
   border-radius: 3px;
 }
-.input-group-xs > .form-control,
-.input-group-xs > .input-group-addon,
-.input-group-xs > .input-group-btn > .btn {
-  height: 22px;
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
+
+.input-group-xs {
+  >.form-control, >.input-group-addon, >.input-group-btn>.btn {
+    height: 22px;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
 }
-.input-group-sm > textarea,
-.input-group-xs > textarea {
+.input-group-sm>textarea, .input-group-xs>textarea {
   height: auto !important;
 }
+
 /* columns of same height styles */
 .row-full-height {
   height: 100%;
@@ -35,6 +37,7 @@
   display: table-cell;
   float: none !important;
 }
+
 @media (min-width: 768px) {
   .col-sm-height {
     display: table-cell;
@@ -53,6 +56,8 @@
     float: none !important;
   }
 }
+
+
 /* vertical alignment styles */
 .col-top {
   vertical-align: top;
@@ -63,37 +68,46 @@
 .col-bottom {
   vertical-align: bottom;
 }
+
+
 /*****************************
 * Toggle Button
 *****************************/
+
 .toggle.btn {
   border-radius: 12px !important;
   padding: 0;
   height: 24px;
   min-height: 24px;
 }
+
 .toggle.off > .toggle-group {
-  left: calc(-100% + 22px);
+  left: calc(~"-100% + 22px");
 }
+
 .toggle > .toggle-group > .btn {
   padding: 0;
   height: 22px;
   line-height: 22px;
   min-height: 22px;
 }
+
 .toggle > .toggle-group > .toggle-on {
   margin-right: 11px;
   padding-right: 11px;
 }
+
 .toggle.off > .toggle-group > .toggle-on {
   background-color: #CCC;
 }
+
 .toggle > .toggle-group > .toggle-off {
   margin-left: 11px;
   padding-left: 11px;
   right: 22px;
-  left: calc(50% - 22px);
+  left: calc(~"50% - 22px");
 }
+
 .toggle > .toggle-group > .toggle-handle {
   border-radius: 12px !important;
   height: 22px;

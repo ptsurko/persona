@@ -22,6 +22,15 @@ h4 {
 /*************************
 * Widgets
 *************************/
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+}
+/*************************
+* Widgets
+*************************/
 .widget .widget-header {
   margin-bottom: 10px;
 }
@@ -84,17 +93,17 @@ h4 {
   display: block;
   padding: 0 5px;
 }
-.range-list > .range-list-item .range-list-value {
+.range-list > .range-list-item .range-list-item-value {
   bottom: 10px;
   color: #337ab7;
   display: inline-block;
   font-size: 14px;
   position: relative;
 }
-.range-list > .range-list-item .range-list-range-labels {
+.range-list > .range-list-item .range-list-item-range-labels {
   margin-bottom: 10px;
 }
-.range-list > .range-list-item .range-list-maxLabel {
+.range-list > .range-list-item .range-list-item-maxLabel {
   float: right !important;
 }
 .range-editor-list {
@@ -105,29 +114,32 @@ h4 {
   background-color: #f5f5f5;
   border-bottom: 1px solid #e3e3e3;
   padding: 10px;
+  position: relative;
 }
-.range-editor-list > .range-editor-list-item > .range-editor-list-col-index {
+.range-editor-list > .range-editor-list-item > .range-editor-list-item-col-index {
   bottom: -2px;
   display: table-cell;
   line-height: 14px;
   position: relative;
   vertical-align: bottom;
 }
-.range-editor-list > .range-editor-list-item > .range-editor-list-col-editor {
+.range-editor-list > .range-editor-list-item > .range-editor-list-item-col-editor {
   display: table-cell;
   width: 100%;
 }
-.range-editor-list > .range-editor-list-item > .range-editor-list-col-actions {
+.range-editor-list > .range-editor-list-item > .range-editor-list-item-col-actions {
   display: table-cell;
   vertical-align: top;
 }
-.range-editor-list > .range-editor-list-item > .range-editor-list-drag-handle {
-  position: relative;
-  right: 0;
-  bottom: 0;
+.range-editor-list > .range-editor-list-item .range-editor-list-item-draghandle {
+  bottom: 3px;
+  cursor: move;
+  height: 16px;
+  position: absolute;
+  right: 3px;
 }
-.range-editor-list > .range-editor-list-item .range-editor-list-alpha-group,
-.range-editor-list > .range-editor-list-item .range-editor-list-omega-group {
+.range-editor-list > .range-editor-list-item .range-editor-list-item-alpha-group,
+.range-editor-list > .range-editor-list-item .range-editor-list-item-omega-group {
   margin-bottom: 0;
 }
 /*************************
@@ -166,4 +178,10 @@ h4 {
   display: block;
   margin: 0 auto;
   width: 120px;
+}
+/*************************
+* Persona spider
+*************************/
+.persona-spider {
+  height: 400px;
 }
