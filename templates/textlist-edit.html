@@ -3,20 +3,20 @@
     <label for="title">Section Title:</label>
     <input type="text" class="form-control" id="title" ng-model="model.title">
   </div>
-  <div class="text-editor-list">
-    <div data-ng-repeat="item in model.items" class="text-editor-list-item">
-      <div class="text-editor-list-item-col-editor">
-        <div class="form-group text-editor-list-item-label-group">
+  <div class="textListEditor">
+    <div data-ng-repeat="item in model.items" class="textListEditor-item">
+      <div class="textListEditor-editCol">
+        <div class="form-group textListEditor-labelGroup">
           <label for="itemLabel{{$index}}">List Item Label</label>
           <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" ng-model="item.label">
         </div>
-        <div class="form-group text-editor-list-item-value-group">
+        <div class="form-group textListEditor-valueGroup">
           <label for="itemValue{{$index}}">List Item Value</label>
           <input type="text" class="form-control input-xs" id="itemValue{{$index}}" ng-model="item.value">
         </div>
       </div>
-      <div class="text-editor-list-item-col-actions">
-        <a href="#0" class="btn btn-link btn-xs text-editor-list-item-col-actions-remove-btn" data-ng-click="model.removeItem(item)" role="button">
+      <div class="textListEditor-actionsCol">
+        <a href="#0" class="btn btn-link btn-xs textListEditor-actionsRemove" data-ng-click="model.removeItem(item)" role="button">
           <i class="fa fa-times-circle"></i>
         </a>
       </div>

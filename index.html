@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="styles/common.css" />
   <link rel="stylesheet" href="styles/bootstrap.css" />
   <link rel="stylesheet" href="styles/bootstrap-sketch.css" />
+  <link rel="stylesheet" href="styles/avatar.css" />
+  <link rel="stylesheet" href="styles/rangelist.css" />
+  <link rel="stylesheet" href="styles/story.css" />
+  <link rel="stylesheet" href="styles/textlist.css" />
+  <link rel="stylesheet" href="styles/toggle.css" />
+  <link rel="stylesheet" href="styles/widget.css" />
 </head>
 <body data-ng-app="Persona" data-ng-controller="PersonaController">
   <nav class="navbar navbar-default">
@@ -39,22 +45,20 @@
   <main class="container">
     <div class="row">
       <div class="col-md-3">
-        <div class="widgets-left">
-          <pr-widget mode="mode" model="avatarSection" class="avatar-widget">
-            <pr-avatar-view data-ng-if="mode=='view'"></pr-avatar-view>
-            <pr-avatar-edit data-ng-if="mode=='edit'"></pr-avatar-edit>
-          </pr-widget>
-          <pr-widget mode="mode" model="listSection" class="textlist-widget">
-            <pr-textlist-view data-ng-if="mode=='view'"></pr-textlist-view>
-            <pr-textlist-edit data-ng-if="mode=='edit'"></pr-textlist-edit>
-          </pr-widget>
-          <pr-widget mode="mode" model="storySection" class="story-widget">
-            <pr-story-view data-ng-if="mode=='view'"></pr-story-view>
-            <pr-story-edit data-ng-if="mode=='edit'"></pr-story-edit>
-          </pr-widget>
-        </div>
+        <pr-widget mode="mode" model="avatarSection" class="widget--left avatar-widget">
+          <pr-avatar-view data-ng-if="mode=='view'"></pr-avatar-view>
+          <pr-avatar-edit data-ng-if="mode=='edit'"></pr-avatar-edit>
+        </pr-widget>
+        <pr-widget mode="mode" model="listSection" class="widget--left textlist-widget">
+          <pr-textlist-view data-ng-if="mode=='view'"></pr-textlist-view>
+          <pr-textlist-edit data-ng-if="mode=='edit'"></pr-textlist-edit>
+        </pr-widget>
+        <pr-widget mode="mode" model="storySection" class="widget--left story-widget">
+          <pr-story-view data-ng-if="mode=='view'"></pr-story-view>
+          <pr-story-edit data-ng-if="mode=='edit'"></pr-story-edit>
+        </pr-widget>
       </div>
-      <div class="col-md-9 widgets-center">
+      <div class="col-md-9">
         <pr-widget mode="mode" model="rangeSection" class="widget">
           <pr-range-view data-ng-if="mode=='view'"></pr-range-view>
           <pr-range-edit data-ng-if="mode=='edit'"></pr-range-edit>

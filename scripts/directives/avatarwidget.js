@@ -24,10 +24,10 @@ angular.module('Persona')
         };
       }],
       link: function(scope, element, attrs, ctrl) {
-        $('.avatar-editor-upload-btn', element).click(function() {
-          $('.avatar-editor-upload-file', element).click();
+        $('.avatarEditor-uploadBtn', element).click(function() {
+          $('.avatarEditor-uploadFile', element).click();
         });
-        $('.avatar-editor-upload-file', element).change(function(e) {
+        $('.avatarEditor-uploadFile', element).change(function(e) {
           var target = e.target;
           var files = target.files;
 
@@ -46,15 +46,15 @@ angular.module('Persona')
       link: function(scope, element, attrs) {
         element.addClass('hide');
         element.on('load', function(e) {
-          element.removeClass('avatar-photo-fit-width');
-          element.removeClass('avatar-photo-fit-height');
+          element.removeClass('avatar-photo--fitWidth');
+          element.removeClass('avatar-photo--fitHeight');
 
           var width = e.target.naturalWidth;
           var height = e.target.naturalHeight;
           if (width > height) {
-            element.addClass('avatar-photo-fit-width');
+            element.addClass('avatar-photo--fitWidth');
           } else if (width < height) {
-            element.addClass('avatar-photo-fit-height');
+            element.addClass('avatar-photo--fitHeight');
           }
           element.removeClass('hide');
         });

@@ -3,13 +3,13 @@
     <h2>{{model.title}}</h2>
   </header>
   <div class="widget-content">
-    <ul class="range-list">
-      <li data-ng-repeat="item in model.items" class="range-list-item">
-        <h3 class="range-list-item-label">{{item.label}}&nbsp;<span class="range-list-item-value">{{item.value}}</span></h3>
-        <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="range-list-item-range">
-        <div class="range-list-item-range-labels">
-          <span class="range-list-item-minLabel">{{item.maxLabel}}</span>
-          <span class="range-list-item-maxLabel">{{item.minLabel}}</span>
+    <ul class="rangeList">
+      <li data-ng-repeat="item in model.items" class="rangeList-item">
+        <h3 class="RangeList-Label">{{item.label}}&nbsp;<span class="rangeList-labelValue">{{item.value}}</span></h3>
+        <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="rangeList-range">
+        <div class="rangeList-labels">
+          <span class="rangeList-minLabel">{{item.maxLabel}}</span>
+          <span class="rangeList-maxLabel">{{item.minLabel}}</span>
         </div>
       </li>
     </ul>
