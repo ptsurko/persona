@@ -1,0 +1,41 @@
+<div>
+  <div data-ng-if="ctrl.mode=='view'">
+    <header class="widget-header">
+      <h2>{{ctrl.model.title}}</h2>
+    </header>
+    <div class="widget-content">
+      <dl class="textList">
+        <dt data-ng-repeat-start="item in ctrl.model.items" id="itemLabel{{$index}}" class="textList-label">{{item.label}}</dt>
+        <dd data-ng-repeat-end aria-labeledby="itemLabel{{$index}}" class="textList-value">{{item.value}}</dd>
+      </dl>
+    </div>
+  </div>
+  <div data-ng-if="ctrl.mode=='edit'">
+    <div class="form-group input-group-sm">
+      <label for="title">Section Title:</label>
+      <input type="text" class="form-control" id="title" ng-model="ctrl.model.title">
+    </div>
+    <div class="textListEditor">
+      <div data-ng-repeat="item in ctrl.model.items" class="textListEditor-item">
+        <div class="textListEditor-editCol">
+          <div class="form-group textListEditor-labelGroup">
+            <label for="itemLabel{{$index}}">List Item Label</label>
+            <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" ng-model="item.label">
+          </div>
+          <div class="form-group textListEditor-valueGroup">
+            <label for="itemValue{{$index}}">List Item Value</label>
+            <input type="text" class="form-control input-xs" id="itemValue{{$index}}" ng-model="item.value">
+          </div>
+        </div>
+        <div class="textListEditor-actionsCol">
+          <a href="#0" class="btn btn-link btn-xs textListEditor-actionsRemove" data-ng-click="ctrl.model.removeItem(item)" role="button">
+            <i class="fa fa-times-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button data-ng-click="ctrl.model.addNewItem()" class="btn btn-default">Add list item</button>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="styles/toggle.css" />
   <link rel="stylesheet" href="styles/widget.css" />
 </head>
-<body data-ng-app="Persona" data-ng-controller="PersonaController">
+<body data-ng-app="Persona" data-ng-controller="PersonaController as ctrl">
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -25,19 +25,19 @@
       </div>
       <form class="navbar-form navbar-right">
         <label for="edit">Edit:</label>
-        <input type="checkbox" id="edit" pr-toggle ng-model="isEditMode">
+        <input type="checkbox" id="edit" pr-toggle ng-model="ctrl.isEditMode">
       </form>
     </div>
   </nav>
   <header>
     <div class="container">
       <div class="row">
-        <div data-ng-if="mode=='view'" class="col-md-12">
-          <h1>{{person.name}}</h1>
+        <div data-ng-if="ctrl.mode=='view'" class="col-md-12">
+          <h1>{{ctrl.person.name}}</h1>
         </div>
-        <div data-ng-if="mode=='edit'" class="form-group col-md-3">
+        <div data-ng-if="ctrl.mode=='edit'" class="form-group col-md-3">
           <label for="title">Section Title:</label>
-          <input type="text" class="form-control" id="title" ng-model="person.name">
+          <input type="text" class="form-control" id="title" ng-model="ctrl.person.name">
         </div>
       </div>
     </div>
@@ -45,24 +45,12 @@
   <main class="container">
     <div class="row">
       <div class="col-md-3">
-        <pr-widget mode="mode" model="avatarSection" class="widget--left avatar-widget">
-          <pr-avatar-view data-ng-if="mode=='view'"></pr-avatar-view>
-          <pr-avatar-edit data-ng-if="mode=='edit'"></pr-avatar-edit>
-        </pr-widget>
-        <pr-widget mode="mode" model="listSection" class="widget--left textlist-widget">
-          <pr-textlist-view data-ng-if="mode=='view'"></pr-textlist-view>
-          <pr-textlist-edit data-ng-if="mode=='edit'"></pr-textlist-edit>
-        </pr-widget>
-        <pr-widget mode="mode" model="storySection" class="widget--left story-widget">
-          <pr-story-view data-ng-if="mode=='view'"></pr-story-view>
-          <pr-story-edit data-ng-if="mode=='edit'"></pr-story-edit>
-        </pr-widget>
+        <pr-avatar mode="ctrl.mode" model="ctrl.avatarSection" class="widget widget--left avatar-widget"></pr-avatar>
+        <pr-textlist mode="ctrl.mode" model="ctrl.listSection" class="widget widget--left textlist-widget"></pr-textlist>
+        <pr-story mode="ctrl.mode" model="ctrl.storySection" class="widget widget--left story-widget"></pr-story>
       </div>
       <div class="col-md-9">
-        <pr-widget mode="mode" model="rangeSection" class="widget">
-          <pr-range-view data-ng-if="mode=='view'"></pr-range-view>
-          <pr-range-edit data-ng-if="mode=='edit'"></pr-range-edit>
-        </pr-widget>
+        <pr-range mode="ctrl.mode" model="ctrl.rangeSection" class="widget"></pr-range>
       </div>
     </div>
   </main>
@@ -84,9 +72,6 @@
   <script src="scripts/models.js"></script>
   <script src="scripts/controllers/personacontroller.js"></script>
   <script src="scripts/directives/raychart.js"></script>
-  <script src="scripts/directives/widget.js"></script>
-  <script src="scripts/directives/transcludenewscope.js"></script>
-  <script src="scripts/directives/header.js"></script>
   <script src="scripts/directives/toggle.js"></script>
   <script src="scripts/directives/avatarwidget.js"></script>
   <script src="scripts/directives/textlistwidget.js"></script>

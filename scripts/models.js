@@ -8,7 +8,7 @@ function Section(title) {
 function ListSection(title, items) {
   ListSection.superclass.constructor.call(this, title);
 
-  this.items = items || []
+  this.items = items || [];
 };
 extend(ListSection, Section);
 
@@ -31,41 +31,41 @@ function TextListSection(title, items) {
 extend(TextListSection, ListSection);
 
 TextListSection.prototype.addNewItem = function() {
-  this.items.push(new TextItem('Age', '30'));
+  this.items.push(new TextItem("Age", "30"));
 };
 
 
 function RangeSection(title, items, min, max) {
   RangeSection.superclass.constructor.call(this, title, items);
 
-  this.min = min || 0
+  this.min = min || 0;
   this.max = max || 0;
 };
 extend(RangeSection, ListSection);
 
 RangeSection.prototype.addNewItem = function() {
   var value = Math.floor(Math.random() * 10) + 1;
-  this.items.push(new RangeItem('Development', value, 'Judging', 'Perceiving'));
+  this.items.push(new RangeItem("Development", value, "Judging", "Perceiving"));
 };
 
 
 function StorySection(title, story) {
   StorySection.superclass.constructor.call(this, title);
 
-  this.story = story || '';
+  this.story = story || "";
 };
 extend(StorySection, Section);
 
 
 function LabeledItem(label) {
-  this.label = label || '';
+  this.label = label || "";
 };
 
 
 function TextItem(label, value) {
   TextItem.superclass.constructor.call(this, label);
 
-  this.value = value || '';
+  this.value = value || "";
 };
 extend(TextItem, LabeledItem);
 
@@ -74,19 +74,19 @@ function RangeItem(label, value, minLabel, maxLabel) {
   TextItem.superclass.constructor.call(this, label);
 
   this.value = value || 0;
-  this.minLabel = minLabel || '';
-  this.maxLabel = maxLabel || '';
+  this.minLabel = minLabel || "";
+  this.maxLabel = maxLabel || "";
 };
 
 
 function AvatarSection(avatarUrl) {
-  this.avatarUrl = avatarUrl || 'images/blank_avatar_male.jpg';
+  this.avatarUrl = avatarUrl || "images/blank_avatar_male.jpg";
 };
 extend(AvatarSection, Section);
 
 
 function extend(Class, BaseClass) {
-  var F = function() {}
+  var F = function() {};
   F.prototype = BaseClass.prototype;
   Class.prototype = new F();
   Class.prototype.constructor = Class;

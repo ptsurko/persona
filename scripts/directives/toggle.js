@@ -1,11 +1,14 @@
-angular.module('Persona')
-  .directive('prToggle', [function() {
+(function() {
+"use strict";
+
+angular.module("Persona")
+  .directive("prToggle", [function() {
     return {
-      restrict: 'EA',
-      require: '^ngModel',
+      restrict: "EA",
+      require: "^ngModel",
       link: function(scope, element, attrs, ctrl) {
         element.change(function() {
-          var checked = $(this).prop('checked');
+          var checked = $(this).prop("checked");
 
           ctrl.$setViewValue(checked);
         });
@@ -13,8 +16,9 @@ angular.module('Persona')
         renderCurrentValue();
 
         function renderCurrentValue() {
-          element.bootstrapToggle(ctrl.$viewValue ? 'on' : 'off');
+          element.bootstrapToggle(ctrl.$viewValue ? "on" : "off");
         }
       }
     };
   }]);
+})();

@@ -1,15 +1,19 @@
-angular.module('Persona')
-  .directive('prStoryView', [function() {
+(function() {
+"use strict";
+
+angular.module("Persona")
+  .directive("prStory", [function() {
     return {
-      restrict: 'EA',
+      restrict: "EA",
+      scope: {
+        model: "=",
+        mode: "="
+      },
       replace: true,
-      templateUrl: 'templates/story-view.html',
-    };
-  }])
-  .directive('prStoryEdit', [function() {
-    return {
-      restrict: 'EA',
-      replace: true,
-      templateUrl: 'templates/story-edit.html',
+      controller: function() {},
+      controllerAs: "ctrl",
+      bindToController: true,
+      templateUrl: "templates/story.html",
     };
   }]);
+})();

@@ -1,15 +1,19 @@
-angular.module('Persona')
-  .directive('prRangeView', [function() {
+(function() {
+"use strict";
+
+angular.module("Persona")
+  .directive("prRange", [function() {
     return {
-      restrict: 'EA',
+      restrict: "EA",
+      scope: {
+        model: "=",
+        mode: "="
+      },
       replace: true,
-      templateUrl: 'templates/range-view.html',
-    };
-  }])
-  .directive('prRangeEdit', [function() {
-    return {
-      restrict: 'EA',
-      replace: true,
-      templateUrl: 'templates/range-edit.html',
+      controller: function() {},
+      controllerAs: "ctrl",
+      bindToController: true,
+      templateUrl: "templates/range.html",
     };
   }]);
+})();

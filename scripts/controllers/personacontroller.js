@@ -1,24 +1,34 @@
-angular.module('Persona')
-    .controller('PersonaController', ['$scope', function($scope) {
-      $scope.isEditMode = false;
-      $scope.person = {
-        name: 'Page title'
-      };
-      $scope.mode = WidgetMode.VIEW;
-      $scope.rangeSection = new RangeSection('Diagram');
-      $scope.rangeSection.addItem(new RangeItem('Temper', 4, 'Introvert', 'Extrovert'));
-      $scope.rangeSection.addItem(new RangeItem('Sales', 6, 'Sensing', 'Intuition'));
-      $scope.rangeSection.addItem(new RangeItem('Marketing', 7, 'Thinking', 'Feeling'));
+(function() {
+"use strict";
 
-      $scope.listSection = new TextListSection('List');
-      $scope.listSection.addItem(new TextItem('Gender', 'Male'));
-      $scope.listSection.addItem(new TextItem('Income', '45000'));
+var WidgetMode = {
+  VIEW: "view",
+  EDIT: "edit"
+};
 
-      $scope.storySection = new StorySection('Story', 'story');
+angular.module("Persona")
+  .controller("PersonaController", ["$scope", function($scope) {
+    var vm = this;
+    vm.isEditMode = false;
+    vm.person = {
+      name: "Page title"
+    };
+    vm.mode = WidgetMode.VIEW;
+    vm.rangeSection = new RangeSection("Diagram");
+    vm.rangeSection.addItem(new RangeItem("Temper", 4, "Introvert", "Extrovert"));
+    vm.rangeSection.addItem(new RangeItem("Sales", 6, "Sensing", "Intuition"));
+    vm.rangeSection.addItem(new RangeItem("Marketing", 7, "Thinking", "Feeling"));
 
-      $scope.avatarSection = new AvatarSection();
+    vm.listSection = new TextListSection("List");
+    vm.listSection.addItem(new TextItem("Gender", "Male"));
+    vm.listSection.addItem(new TextItem("Income", "45000"));
 
-      $scope.$watch('isEditMode', function(isEditMode) {
-        $scope.mode = isEditMode ? WidgetMode.EDIT : WidgetMode.VIEW;
-      });
-    }]);
+    vm.storySection = new StorySection("Story", "story");
+
+    vm.avatarSection = new AvatarSection();
+
+    $scope.$watch(function() { return vm.isEditMode; }, function(isEditMode) {
+      vm.mode = isEditMode ? WidgetMode.EDIT : WidgetMode.VIEW;
+    });
+  }]);
+})();

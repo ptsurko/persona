@@ -1,15 +1,19 @@
-angular.module('Persona')
-  .directive('prTextlistView', [function() {
+(function() {
+"use strict";
+
+angular.module("Persona")
+  .directive("prTextlist", [function() {
     return {
-      restrict: 'EA',
+      restrict: "EA",
+      scope: {
+        model: "=",
+        mode: "="
+      },
       replace: true,
-      templateUrl: 'templates/textlist-view.html',
-    };
-  }])
-  .directive('prTextlistEdit', [function() {
-    return {
-      restrict: 'EA',
-      replace: true,
-      templateUrl: 'templates/textlist-edit.html',
+      controller: function() {},
+      controllerAs: "ctrl",
+      bindToController: true,
+      templateUrl: "templates/textlist.html",
     };
   }]);
+})();

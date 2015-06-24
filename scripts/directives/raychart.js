@@ -1,10 +1,13 @@
+(function() {
+"use strict";
+
 // TODO: rename
-angular.module('Persona')
-  .directive('prRayChart', [function() {
+angular.module("Persona")
+  .directive("prRayChart", [function() {
     return {
-      restrict: 'EA',
+      restrict: "EA",
       scope: {
-        items: '=items'
+        items: "=items"
       },
       link: function(scope, element, attrs) {
         var rayChart = d3.starline.rayChart();
@@ -16,7 +19,7 @@ angular.module('Persona')
           .append("g")
           .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 
-        scope.$watch('items', function(newData, oldData) {
+        scope.$watch("items", function(newData, oldData) {
           var chartData = newData.map(function(item) {
             return {
               axis: item.label,
@@ -28,3 +31,4 @@ angular.module('Persona')
       }
     };
   }]);
+})();
