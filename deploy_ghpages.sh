@@ -8,11 +8,23 @@ if [ $TRAVIS_PULL_REQUEST != false ];
 fi
 (
   echo "Pushing build to ${GH_REF} gh-pages branch."
+
+  # go to the out directory and create a *new* Git repo
   cd build
   git init
+
+  # inside this git repo we'll pretend to be a new user
   git config user.name "${GIT_NAME}"
   git config user.email "${GIT_EMAIL}"
+
+  # The first and only commit to this new Git repo contains all the
+  # files present with the commit message "Deploy to GitHub Pages".
   git add .
   git commit -m "Deployed to Github Pages"
-  git push --force "https://${GH_TOKEN}:x-oauth-basic@${GH_REF}" gh-pages:gh-pages
+
+  # Force push from the current repo's master branch to the remote
+  # repo's gh-pages branch. (All previous history on the gh-pages branch
+  # will be lost, since we are overwriting it.) We redirect any output to
+  # /dev/null to hide any sensitive credential data that might otherwise be exposed.
+  git push --force "https://${GH_TOKEN}:x-oauth-basic@${GH_REF}" master:gh-pages > /dev/null 2>&1
 )
