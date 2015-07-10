@@ -1,5 +1,5 @@
 
-// TODO: Condider to rename to WidgetModel
+// TODO: Condider to remove this at all - this models looks like view models
 function Section(title) {
   this.title = title;
 };
