@@ -1,1 +1,2 @@
-angular.module("Persona", ["ui.sortable"]);
+
+angular.module("app", ["app.core", "app.persona"]);

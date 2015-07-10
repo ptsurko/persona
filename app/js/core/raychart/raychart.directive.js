@@ -2,7 +2,7 @@
 "use strict";
 
 // TODO: rename
-angular.module("Persona")
+angular.module("app.core")
   .directive("prRayChart", [function() {
     return {
       restrict: "EA",

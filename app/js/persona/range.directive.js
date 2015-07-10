@@ -1,7 +1,7 @@
 (function() {
 "use strict";
 
-angular.module("Persona")
+angular.module("app.persona")
   .directive("prRange", [function() {
     return {
       restrict: "EA",

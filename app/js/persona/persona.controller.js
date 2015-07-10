@@ -6,7 +6,7 @@ var WidgetMode = {
   EDIT: "edit"
 };
 
-angular.module("Persona")
+angular.module("app.persona")
   .controller("PersonaController", ["$scope", function($scope) {
     var vm = this;
     vm.isEditMode = false;

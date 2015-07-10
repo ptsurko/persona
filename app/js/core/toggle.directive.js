@@ -1,7 +1,7 @@
 (function() {
 "use strict";
 
-angular.module("Persona")
+angular.module("app.core")
   .directive("prToggle", [function() {
     return {
       restrict: "EA",
