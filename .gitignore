@@ -38,3 +38,6 @@ typings
 
 # Prototypes
 _*.html
+
+# Build files
+build

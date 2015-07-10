@@ -1,33 +1,45 @@
+@import "./../../bower_components/bootstrap/less/mixins/clearfix.less";
+
 @font-face {
   font-family: "WeblySleek UI";
-  src: url("../fonts/weblysleekuil.ttf") format("truetype");
+  src: url("../fonts/weblysleekuisb.ttf") format("truetype");
 }
+@font-size: 14px;
+
 body {
-  font-size: 14px;
+  font-size: @font-size;
   font-family: "WeblySleek UI";
   font-weight: 500;
 }
+
 h1 {
   font-size: 46px;
 }
+
 h2 {
   font-size: 34px;
 }
+
 h3 {
   font-size: 24px;
 }
+
 h4 {
   font-size: 18px;
 }
+
 .axis path,
 .axis line {
-  fill: none;
-  stroke: black;
-  stroke-width: 1px;
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
 }
+
+
 /*************************
 * Persona spider
 *************************/
+
 .persona-spider {
-  height: 400px;
+    height: 400px;
 }
