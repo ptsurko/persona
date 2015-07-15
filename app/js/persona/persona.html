@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Persona</a>
+    </div>
+    <form class="navbar-form navbar-right">
+      <label for="edit">Edit:</label>
+      <input type="checkbox" id="edit" pr-toggle ng-model="ctrl.isEditMode">
+    </form>
+  </div>
+</nav>
+<header>
+  <div class="container">
+    <div class="row">
+      <div data-ng-if="ctrl.mode=='view'" class="col-md-12">
+        <h1>{{ctrl.person.name}}</h1>
+      </div>
+      <div data-ng-if="ctrl.mode=='edit'" class="form-group col-md-3">
+        <label for="title">Section Title:</label>
+        <input type="text" class="form-control" id="title" ng-model="ctrl.person.name">
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <pr-avatar mode="ctrl.mode" model="ctrl.avatarSection" class="widget widget--left avatar-widget"></pr-avatar>
+      <pr-textlist mode="ctrl.mode" model="ctrl.listSection" class="widget widget--left textlist-widget"></pr-textlist>
+      <pr-story mode="ctrl.mode" model="ctrl.storySection" class="widget widget--left story-widget"></pr-story>
+    </div>
+    <div class="col-md-9">
+      <pr-range mode="ctrl.mode" model="ctrl.rangeSection" class="widget"></pr-range>
+    </div>
+  </div>
+</main>
+<footer class="page-main-footer">
+</footer>

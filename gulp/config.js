@@ -12,6 +12,7 @@ module.exports = {
         'bower_components/jquery-ui/ui/minified/sortable.min.js',
         'bower_components/angular/angular.min.js',
         'bower_components/angular-ui-sortable/sortable.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'bower_components/d3/d3.min.js',
         'bower_components/bootstrap-toggle/js/bootstrap-toggle.js',
         'node_modules/d3-transform/src/d3-transform.js'
@@ -46,6 +47,7 @@ module.exports = {
     src: 'app/**/*.html',
     dest: 'build'
   },
+  app: 'app/**/*',
   dist: {
     root: 'build'
   }

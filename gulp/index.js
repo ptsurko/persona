@@ -62,10 +62,10 @@ gulp.task("build", ["cleanup"], function() {
   runSequence(["js", "css", "images", "fonts", "views"]);
 });
 
-gulp.task("watch", ["connect"], function() {
-  gulp.watch(config.styles.src, function(event) {
-    gulp.run("css");
-  })
+gulp.task("watch", ["build", "connect"], function() {
+  gulp.watch(config.app, function(event) {
+    gulp.run("build");
+  });
 });
 
 gulp.task("default", ["build"]);
