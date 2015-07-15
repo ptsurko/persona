@@ -11,7 +11,7 @@ angular.module("app.persona")
         mode: "="
       },
       replace: true,
-      templateUrl: "templates/avatar.html",
+      templateUrl: "js/persona/avatar.view.html",
       controller: ["$scope", function($scope) {
         var vm = this;
         vm.uploadAvatar = function(file) {

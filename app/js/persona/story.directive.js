@@ -13,7 +13,7 @@ angular.module("app.persona")
       controller: function() {},
       controllerAs: "ctrl",
       bindToController: true,
-      templateUrl: "templates/story.html",
+      templateUrl: "js/persona/story.view.html"
     };
   }]);
 })();

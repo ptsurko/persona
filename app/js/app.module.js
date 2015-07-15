@@ -7,7 +7,7 @@ angular.module("app", ["app.core", "ui.router", "app.persona"])
     $stateProvider
       .state("persona", {
         url: "/",
-        templateUrl: "js/persona/persona.html",
+        templateUrl: "js/persona/persona.view.html",
         controller: "PersonaController",
         controllerAs: "ctrl"
       });
