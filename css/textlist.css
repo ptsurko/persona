@@ -1,0 +1,30 @@
+/*************************
+* Text list
+*************************/
+.textList-label {
+  float: left;
+  text-align: left;
+  width: 40%;
+}
+.textListEditor-item {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.textListEditor-editCol {
+  display: table-cell;
+  width: 100%;
+}
+.textListEditor-actionsCol {
+  display: table-cell;
+  vertical-align: top;
+}
+.textListEditor-actionsRemove {
+  padding-right: 0;
+}
+.textListEditor-valueGroup {
+  margin-bottom: 0;
+}
+.textListEditor-actions {
+  text-align: center;
+}

@@ -1,0 +1,76 @@
+<div>
+  <div data-ng-if="ctrl.mode=='view'">
+    <header class="widget-header">
+      <h2>{{ctrl.model.title}}</h2>
+    </header>
+    <div class="widget-content">
+      <ul class="rangeList">
+        <li data-ng-repeat="item in ctrl.model.items" class="rangeList-item">
+          <h3 class="RangeList-Label">{{item.label}}&nbsp;<span class="rangeList-labelValue">{{item.value}}</span></h3>
+          <input type="range" min="1" max="10" step="1" data-ng-model="item.value" class="rangeList-range">
+          <div class="rangeList-labels">
+            <span class="rangeList-minLabel">{{item.maxLabel}}</span>
+            <span class="rangeList-maxLabel">{{item.minLabel}}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="text-center">
+        <pr-ray-chart class="persona-spider" items="ctrl.model.items"></pr-ray-chart>
+      </div>
+    </div>
+  </div>
+  <div data-ng-if="ctrl.mode=='edit'">
+    <div class="row">
+      <div class="form-group col-md-5">
+        <label for="title">Section Title:</label>
+        <input type="text" class="form-control imput-sm" id="title" ng-model="ctrl.model.title">
+      </div>
+    </div>
+    <ul class="rangeListEditor" data-ui-sortable="{'handle': '.rangeListEditor-dragHandle'}" data-ng-model="ctrl.model.items">
+      <li data-ng-repeat="item in ctrl.model.items" class="rangeListEditor-item">
+        <div class="rangeListEditor-indexCol">{{$index}}</div>
+        <div class="rangeListEditor-editorCol">
+          <div class="row-same-height row-full-height">
+            <div class="col-md-5 col-md-height">
+              <div class="form-group">
+                <label for="itemLabel{{$index}}">Diagram Item Label</label>
+                <input type="text" class="form-control input-xs" id="itemLabel{{$index}}" data-ng-model="item.label">
+              </div>
+              <div class="form-group rangeListEditor-alphaGroup">
+                <label for="itemMinLabel{{$index}}">Diagram Item Label Alpha</label>
+                <input type="text" class="form-control input-xs" id="itemMinLabel{{$index}}" data-ng-model="item.minLabel">
+              </div>
+            </div>
+            <div class="col-md-5 col-md-height col-bottom">
+              <div class="form-group rangeListEditor-omegaGroup">
+                <label for="itemMaxLabel{{$index}}">Diagram Item Label Omega</label>
+                <input type="text" class="form-control input-xs" id="itemMaxLabel{{$index}}" data-ng-model="item.maxLabel">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rangeListEditor-actionsCol">
+          <a href="#0" class="btn btn-link btn-xs" data-ng-click="ctrl.model.removeItem(item)" data-ng-show="ctrl.model.items.length > 3" role="button">
+            <i class="fa fa-times-circle"></i>
+          </a>
+        </div>
+        <span class="rangeListEditor-dragHandle">
+          <svg width="16px" height="16px">
+            <circle cx="13" cy="5" r="1" fill="#777"/>
+            <circle cx="9" cy="9" r="1" fill="#777"/>
+            <circle cx="13" cy="9" r="1" fill="#777"/>
+            <circle cx="5" cy="13" r="1" fill="#777"/>
+            <circle cx="9" cy="13" r="1" fill="#777"/>
+            <circle cx="13" cy="13" r="1" fill="#777"/>
+          </svg>
+        </span>
+      </li>
+    </ul>
+    <div class="rangeListEditor-actions">
+      <button data-ng-click="ctrl.model.addNewItem()" class="btn btn-default">Add diagram item</button>
+    </div>
+    <div class="text-center">
+      <pr-ray-chart class="persona-spider" items="ctrl.model.items"></pr-ray-chart>
+    </div>
+  </div>
+</div>

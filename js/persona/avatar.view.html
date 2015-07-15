@@ -1,0 +1,12 @@
+<div>
+  <div class="avatar" data-ng-if="ctrl.mode=='view'">
+    <img class="avatar-photo" data-ng-src="{{ctrl.model.avatarUrl}}" data-pr-avatar-fit></img>
+  </div>
+  <div class="avatarEditor" data-ng-if="ctrl.mode=='edit'">
+    <div class="avatar">
+      <img class="avatar-photo" data-ng-src="{{ctrl.model.avatarUrl}}" data-pr-avatar-fit></img>
+    </div>
+    <input class="avatarEditor-uploadFile" type="file">
+    <button class="btn btn-default avatarEditor-uploadBtn">...</button>
+  </div>
+</div>

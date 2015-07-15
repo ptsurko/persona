@@ -1,0 +1,24 @@
+/*************************
+* Widgets
+*************************/
+.widget-header {
+  margin-bottom: 10px;
+}
+.widget-header h1,
+.widget-header h2 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.widget--left {
+  background-color: #f5f5f5;
+  border-right: 1px solid #e3e3e3;
+  border-left: 1px solid #e3e3e3;
+  padding: 20px 20px 0 20px;
+}
+.widget--left:first-child {
+  border-top: 1px solid #e3e3e3;
+}
+.widget--left:last-child {
+  border-bottom: 1px solid #e3e3e3;
+  padding-bottom: 20px;
+}
